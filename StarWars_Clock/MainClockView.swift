@@ -48,6 +48,7 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .green : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .green : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(x: 0, y: -60)
+                        ///Connect Time to rotation effect
                         .rotationEffect(Angle(degrees: Double(sliderValue * 4320)))
                     Capsule(style: .circular)
                         .fill(Color.white)
@@ -55,6 +56,7 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(x: 0, y: 53)
+                        ///Connect Time to rotation effect
                         .rotationEffect(Angle(degrees: Double(sliderValue * 360)))
                     Circle()
                         .fill(Color.gray)
