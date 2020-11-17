@@ -11,9 +11,10 @@ struct MainClockView: View {
     @State private var isGradient = false
     @State private var sliderValue: Float = 0.021
     @State private var isJedi: Bool = false
-    @State private var currentTime = Date()
-    var width = UIScreen.main.bounds.width
+    @State private var digitalClock = Date()
+    @State private var currentTimeNow = Time(hour: 0, min: 0, sec: 0)
     
+    var width = UIScreen.main.bounds.width
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     private var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,14 +28,15 @@ struct MainClockView: View {
             LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.gray,Color.red]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-                Text("\(currentTime, formatter: formatter)")
+               // currentTime, formatter: formatter
+                Text("\(digitalClock, formatter: formatter)")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                     .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     .onReceive(timer, perform: { input in
-                        currentTime = input
+                        digitalClock = input
                     })
                 Spacer()
                 ZStack {
@@ -52,22 +54,30 @@ struct MainClockView: View {
                             .offset(y: (width - 110) / 2)
                             .rotationEffect(.init(degrees:Double(i) * 6 ))
                     }
+                    //Seconds Hand
+                    Capsule(style: .circular)
+                        .fill(Color.white)
+                        .frame(width: 2, height:(width - 180) / 2)
+                        .shadow(color: isJedi ? .yellow : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .shadow(color: isJedi ? .yellow : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .offset(y: -(width - 180) / 4)
+                        .rotationEffect(Angle(degrees: Double(currentTimeNow.sec) * 6))
+                    //Minutes Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
                         .frame(width: 5, height: 182)
                         .shadow(color: isJedi ? .green : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .green : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                        .offset(x: 0, y: -60)
-                        ///Connect Time to rotation effect
-                        .rotationEffect(Angle(degrees: Double(sliderValue * 4320)))
+                        .offset(y: -(width - 200) / 4)
+                        .rotationEffect(Angle(degrees: Double(currentTimeNow.min) * 6))
+                    //Hours Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
-                        .frame(width: 8, height: 87.5)
+                        .frame(width: 8, height: (width - 240) / 2)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                        .offset(x: 0, y: 53)
-                        ///Connect Time to rotation effect
-                        .rotationEffect(Angle(degrees: Double(sliderValue * 360)))
+                        .offset(y: -(width - 240) / 4)
+                        .rotationEffect(Angle(degrees: Double(currentTimeNow.hour) * 30))
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 20, height: 20)
@@ -92,12 +102,26 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                 }
+                .onAppear(perform: {
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: Date())
+                    let min = calendar.component(.minute, from: Date())
+                    let sec = calendar.component(.second, from: Date())
+                    withAnimation(Animation.linear(duration: 0.01)) {
+                        self.currentTimeNow = Time(hour: hour, min: min, sec: sec)
+                    }
+                })
+                .onReceive(timer, perform: { (_) in
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: Date())
+                    let min = calendar.component(.minute, from: Date())
+                    let sec = calendar.component(.second, from: Date())
+                    withAnimation(Animation.linear(duration: 0.01)) {
+                        self.currentTimeNow = Time(hour: hour, min: min, sec: sec)
+                    }
+                })
                 
-                Slider(value: $sliderValue)
-                    //.aspectRatio(contentMode: .fill)
-                    .frame(width: 250, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .accentColor(isJedi ? .blue : .red)
-                    .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
+              Spacer()
                 Button() {
                    withAnimation(.easeIn(duration:1)){
                         isJedi.toggle()
@@ -118,6 +142,12 @@ Spacer()
             }
         }
     }
+}
+
+struct Time {
+    var hour: Int
+    var min: Int
+    var sec: Int
 }
 
 struct ContentView_Previews: PreviewProvider {
