@@ -12,6 +12,7 @@ struct MainClockView: View {
     @State private var sliderValue: Float = 0.021
     @State private var isJedi: Bool = false
     @State private var currentTime = Date()
+    var width = UIScreen.main.bounds.width
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     private var formatter: DateFormatter = {
@@ -40,8 +41,17 @@ struct MainClockView: View {
                     Circle()
                         .foregroundColor(.black)
                         .opacity(0.85)
-                        .frame(width: 375, height: 375, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(width: width - 80, height: width - 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .shadow(color:/*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                    ForEach(0..<60,id: \.self) {i in
+                        Rectangle()
+                            .fill(Color.white)
+                            .frame(width: 2, height: (i % 5) == 0 ? 15 : 5)
+                            .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                            .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                            .offset(y: (width - 110) / 2)
+                            .rotationEffect(.init(degrees:Double(i) * 6 ))
+                    }
                     Capsule(style: .circular)
                         .fill(Color.white)
                         .frame(width: 5, height: 182)
@@ -61,22 +71,22 @@ struct MainClockView: View {
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 20, height: 20)
-                    Text("12").offset(x: 0, y: -170)
+                    Text("12").offset(x: 0, y: -160)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    Text("3").offset(x: 170, y: 0)
+                    Text("3").offset(x: 160, y: 0)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    Text("6").offset(x: 0, y: 170)
+                    Text("6").offset(x: 0, y: 160)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    Text("9").offset(x: -170, y: 0)
+                    Text("9").offset(x: -160, y: 0)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
