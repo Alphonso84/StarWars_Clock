@@ -11,7 +11,7 @@ import SwiftUI
 struct StarWars_ClockApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainClockView()
         }
     }
 }

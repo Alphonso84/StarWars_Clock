@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "23-238635_darth-vader-clipart-sith-im-stevie-wonder-and.png.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

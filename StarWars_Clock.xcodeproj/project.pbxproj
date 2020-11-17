@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D012A72825639B8F0025A74E /* StarWars_ClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012A72725639B8F0025A74E /* StarWars_ClockApp.swift */; };
-		D012A72A25639B8F0025A74E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012A72925639B8F0025A74E /* ContentView.swift */; };
+		D012A72A25639B8F0025A74E /* MainClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012A72925639B8F0025A74E /* MainClockView.swift */; };
 		D012A72C25639B920025A74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D012A72B25639B920025A74E /* Assets.xcassets */; };
 		D012A72F25639B920025A74E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D012A72E25639B920025A74E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		D012A72425639B8F0025A74E /* StarWars_Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars_Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D012A72725639B8F0025A74E /* StarWars_ClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWars_ClockApp.swift; sourceTree = "<group>"; };
-		D012A72925639B8F0025A74E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D012A72925639B8F0025A74E /* MainClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClockView.swift; sourceTree = "<group>"; };
 		D012A72B25639B920025A74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D012A72E25639B920025A74E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D012A73025639B920025A74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				D012A72725639B8F0025A74E /* StarWars_ClockApp.swift */,
-				D012A72925639B8F0025A74E /* ContentView.swift */,
+				D012A72925639B8F0025A74E /* MainClockView.swift */,
 				D012A72B25639B920025A74E /* Assets.xcassets */,
 				D012A73025639B920025A74E /* Info.plist */,
 				D012A72D25639B920025A74E /* Preview Content */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D012A72A25639B8F0025A74E /* ContentView.swift in Sources */,
+				D012A72A25639B8F0025A74E /* MainClockView.swift in Sources */,
 				D012A72825639B8F0025A74E /* StarWars_ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
