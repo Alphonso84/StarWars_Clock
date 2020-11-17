@@ -25,7 +25,7 @@ struct MainClockView: View {
     var body: some View {
         ZStack {
            
-            LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.gray,Color.red]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.black,Color.gray,Color.red]), startPoint: .bottomTrailing, endPoint: .topLeading)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
                // currentTime, formatter: formatter
