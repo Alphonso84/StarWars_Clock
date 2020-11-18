@@ -10,7 +10,9 @@ import SwiftUI
 struct MainClockView: View {
     @State private var isGradient = false
     @State private var sliderValue: Float = 0.021
-    @State private var isJedi: Bool = false
+    @State private var isJedi: Bool = true
+    @State private var scaledSize: CGFloat = 0
+    @State private var clockOpacity: Double = 0
     @State private var digitalClock = Date()
     @State private var currentTimeNow = Time(hour: 0, min: 0, sec: 0)
     
@@ -28,21 +30,13 @@ struct MainClockView: View {
             LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.black,Color.gray,Color.red]), startPoint: .bottomTrailing, endPoint: .topLeading)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-               // currentTime, formatter: formatter
-                Text("\(digitalClock, formatter: formatter)")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    .onReceive(timer, perform: { input in
-                        digitalClock = input
-                    })
+              
+               
                 Spacer()
                 ZStack {
                     Circle()
                         .foregroundColor(.black)
-                        .opacity(0.85)
+                        .opacity(clockOpacity)
                         .frame(width: width - 60, height: width - 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .shadow(color:/*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     ForEach(0..<60,id: \.self) {i in
@@ -57,29 +51,37 @@ struct MainClockView: View {
                     //Seconds Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
+                        .scaleEffect(scaledSize)
                         .frame(width: 2, height:(width - 180) / 2)
                         .shadow(color: isJedi ? .yellow : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .yellow : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 180) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.sec) * 6))
                     //Minutes Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
+                        .scaleEffect(scaledSize)
                         .frame(width: 5, height: 182)
                         .shadow(color: isJedi ? .green : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .green : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 200) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.min) * 6))
                     //Hours Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
-                        .frame(width: 8, height: (width - 240) / 2)
+                        .scaleEffect(scaledSize)
+                        .frame(width: 7, height: (width - 240) / 2)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .shadow(color: isJedi ? .blue : .black, radius: 10, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 240) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.hour) * 30))
                     Circle()
-                        .fill(Color.gray)
+                        .fill(Color.black)
+                        .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                       
                         .frame(width: 20, height: 20)
                     Text("12").offset(x: 0, y: -140)
                         .foregroundColor(.white)
@@ -103,6 +105,11 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                 }
                 .onAppear(perform: {
+                    withAnimation(Animation.linear(duration: 1.5)) {
+                        scaledSize = 1.0
+                        clockOpacity = 0.7
+                    }
+                    
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: Date())
                     let min = calendar.component(.minute, from: Date())

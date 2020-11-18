@@ -11,7 +11,38 @@
 		D012A72A25639B8F0025A74E /* MainClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012A72925639B8F0025A74E /* MainClockView.swift */; };
 		D012A72C25639B920025A74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D012A72B25639B920025A74E /* Assets.xcassets */; };
 		D012A72F25639B920025A74E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D012A72E25639B920025A74E /* Preview Assets.xcassets */; };
+		D012A73F25647CCC0025A74E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D012A73E25647CCC0025A74E /* WidgetKit.framework */; };
+		D012A74125647CCC0025A74E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D012A74025647CCC0025A74E /* SwiftUI.framework */; };
+		D012A74425647CCC0025A74E /* StarWars_Clock_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012A74325647CCC0025A74E /* StarWars_Clock_Widget.swift */; };
+		D012A74725647CCE0025A74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D012A74625647CCE0025A74E /* Assets.xcassets */; };
+		D012A74925647CCE0025A74E /* StarWars_Clock_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D012A74525647CCC0025A74E /* StarWars_Clock_Widget.intentdefinition */; };
+		D012A74A25647CCE0025A74E /* StarWars_Clock_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D012A74525647CCC0025A74E /* StarWars_Clock_Widget.intentdefinition */; };
+		D012A74D25647CCE0025A74E /* StarWars_Clock_WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D012A73C25647CCC0025A74E /* StarWars_Clock_WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D012A74B25647CCE0025A74E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D012A71C25639B8F0025A74E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D012A73B25647CCC0025A74E;
+			remoteInfo = StarWars_Clock_WidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D012A74E25647CCE0025A74E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D012A74D25647CCE0025A74E /* StarWars_Clock_WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D012A72425639B8F0025A74E /* StarWars_Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars_Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +51,13 @@
 		D012A72B25639B920025A74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D012A72E25639B920025A74E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D012A73025639B920025A74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D012A73C25647CCC0025A74E /* StarWars_Clock_WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StarWars_Clock_WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D012A73E25647CCC0025A74E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D012A74025647CCC0025A74E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D012A74325647CCC0025A74E /* StarWars_Clock_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWars_Clock_Widget.swift; sourceTree = "<group>"; };
+		D012A74525647CCC0025A74E /* StarWars_Clock_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = StarWars_Clock_Widget.intentdefinition; sourceTree = "<group>"; };
+		D012A74625647CCE0025A74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D012A74825647CCE0025A74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +68,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D012A73925647CCC0025A74E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D012A74125647CCC0025A74E /* SwiftUI.framework in Frameworks */,
+				D012A73F25647CCC0025A74E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				D012A72625639B8F0025A74E /* StarWars_Clock */,
+				D012A74225647CCC0025A74E /* StarWars_Clock_Widget */,
+				D012A73D25647CCC0025A74E /* Frameworks */,
 				D012A72525639B8F0025A74E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				D012A72425639B8F0025A74E /* StarWars_Clock.app */,
+				D012A73C25647CCC0025A74E /* StarWars_Clock_WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +119,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D012A73D25647CCC0025A74E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D012A73E25647CCC0025A74E /* WidgetKit.framework */,
+				D012A74025647CCC0025A74E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D012A74225647CCC0025A74E /* StarWars_Clock_Widget */ = {
+			isa = PBXGroup;
+			children = (
+				D012A74325647CCC0025A74E /* StarWars_Clock_Widget.swift */,
+				D012A74525647CCC0025A74E /* StarWars_Clock_Widget.intentdefinition */,
+				D012A74625647CCE0025A74E /* Assets.xcassets */,
+				D012A74825647CCE0025A74E /* Info.plist */,
+			);
+			path = StarWars_Clock_Widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +149,34 @@
 				D012A72025639B8F0025A74E /* Sources */,
 				D012A72125639B8F0025A74E /* Frameworks */,
 				D012A72225639B8F0025A74E /* Resources */,
+				D012A74E25647CCE0025A74E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D012A74C25647CCE0025A74E /* PBXTargetDependency */,
 			);
 			name = StarWars_Clock;
 			productName = StarWars_Clock;
 			productReference = D012A72425639B8F0025A74E /* StarWars_Clock.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D012A73B25647CCC0025A74E /* StarWars_Clock_WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D012A75125647CCE0025A74E /* Build configuration list for PBXNativeTarget "StarWars_Clock_WidgetExtension" */;
+			buildPhases = (
+				D012A73825647CCC0025A74E /* Sources */,
+				D012A73925647CCC0025A74E /* Frameworks */,
+				D012A73A25647CCC0025A74E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StarWars_Clock_WidgetExtension;
+			productName = StarWars_Clock_WidgetExtension;
+			productReference = D012A73C25647CCC0025A74E /* StarWars_Clock_WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -99,6 +188,9 @@
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					D012A72325639B8F0025A74E = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					D012A73B25647CCC0025A74E = {
 						CreatedOnToolsVersion = 12.2;
 					};
 				};
@@ -117,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				D012A72325639B8F0025A74E /* StarWars_Clock */,
+				D012A73B25647CCC0025A74E /* StarWars_Clock_WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +224,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D012A73A25647CCC0025A74E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D012A74725647CCE0025A74E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,11 +240,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D012A72A25639B8F0025A74E /* MainClockView.swift in Sources */,
+				D012A74A25647CCE0025A74E /* StarWars_Clock_Widget.intentdefinition in Sources */,
 				D012A72825639B8F0025A74E /* StarWars_ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D012A73825647CCC0025A74E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D012A74925647CCE0025A74E /* StarWars_Clock_Widget.intentdefinition in Sources */,
+				D012A74425647CCC0025A74E /* StarWars_Clock_Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D012A74C25647CCE0025A74E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D012A73B25647CCC0025A74E /* StarWars_Clock_WidgetExtension */;
+			targetProxy = D012A74B25647CCE0025A74E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D012A73125639B920025A74E /* Debug */ = {
@@ -265,6 +384,7 @@
 		D012A73425639B920025A74E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +407,7 @@
 		D012A73525639B920025A74E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +422,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Alphonso.Sensley.StarWars-Clock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D012A74F25647CCE0025A74E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6257XTCRBF;
+				INFOPLIST_FILE = StarWars_Clock_Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alphonso.Sensley.StarWars-Clock.StarWars-Clock-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D012A75025647CCE0025A74E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6257XTCRBF;
+				INFOPLIST_FILE = StarWars_Clock_Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alphonso.Sensley.StarWars-Clock.StarWars-Clock-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -323,6 +486,15 @@
 			buildConfigurations = (
 				D012A73425639B920025A74E /* Debug */,
 				D012A73525639B920025A74E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D012A75125647CCE0025A74E /* Build configuration list for PBXNativeTarget "StarWars_Clock_WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D012A74F25647CCE0025A74E /* Debug */,
+				D012A75025647CCE0025A74E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
