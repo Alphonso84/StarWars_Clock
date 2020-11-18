@@ -30,8 +30,6 @@ struct MainClockView: View {
             LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.black,Color.gray,Color.red]), startPoint: .bottomTrailing, endPoint: .topLeading)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-              
-               
                 Spacer()
                 ZStack {
                     Circle()
@@ -127,13 +125,11 @@ struct MainClockView: View {
                         self.currentTimeNow = Time(hour: hour, min: min, sec: sec)
                     }
                 })
-                
               Spacer()
                 Button() {
                    withAnimation(.easeIn(duration:1)){
                         isJedi.toggle()
                    }
-                    
                 } label: {
                     Text(isJedi ? "JEDI" : "SITH")
                         .font(.title)
