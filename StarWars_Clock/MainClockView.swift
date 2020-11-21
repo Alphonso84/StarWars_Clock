@@ -9,11 +9,9 @@ import SwiftUI
 
 struct MainClockView: View {
     @State private var isGradient = false
-    @State private var sliderValue: Float = 0.021
     @State private var isJedi: Bool = true
     @State private var scaledSize: CGFloat = 0
     @State private var clockOpacity: Double = 0
-    @State private var digitalClock = Date()
     @State private var currentTimeNow = Time(hour: 0, min: 0, sec: 0)
     
     var width = UIScreen.main.bounds.width
