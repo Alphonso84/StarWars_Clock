@@ -36,7 +36,7 @@ struct MainClockView: View {
                         .frame(width: width - 60, height: width - 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .shadow(color:/*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     ForEach(0..<60,id: \.self) {i in
-                        Rectangle()
+                        Capsule()
                             .fill(Color.white)
                             .frame(width: 2, height: (i % 5) == 0 ? 15 : 5)
                             .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
