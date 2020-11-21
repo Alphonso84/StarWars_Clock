@@ -31,6 +31,7 @@ struct MainClockView: View {
             VStack {
                 Spacer()
                 Slider(value: $sliderValue)
+                    .frame(width: 300)
                 ZStack {
                     Circle()
                         .foregroundColor(.black)
