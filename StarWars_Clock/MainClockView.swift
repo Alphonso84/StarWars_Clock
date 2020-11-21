@@ -26,46 +26,52 @@ struct MainClockView: View {
     var buttonText: String?
     var body: some View {
         ZStack {
-           
             LinearGradient(gradient:Gradient(colors: isJedi ? [Color.white,Color.blue] : [Color.black,Color.gray,Color.red]), startPoint: .bottomTrailing, endPoint: .topLeading)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
                 Spacer()
+                Slider(value: $sliderValue)
                 ZStack {
                     Circle()
                         .foregroundColor(.black)
                         .opacity(clockOpacity)
                         .frame(width: width - 60, height: width - 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .shadow(color:/*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) * 7.5), axis: (x: 90, y: 90, z: 0))
                     ForEach(0..<60,id: \.self) {i in
                         Rectangle()
                             .fill(Color.white)
-                            .frame(width: 2, height: (i % 5) == 0 ? 15 : 5)
+                            .frame(width: 2, height: 5)
                             .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                             .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                             .offset(y: (width - 90) / 2)
                             .rotationEffect(.init(degrees:Double(i) * 6 ))
+                            .rotation3DEffect(Angle(degrees: Double(sliderValue) / 10), axis: (x: 90, y: 90, z: 0))
                     }
                     Text("12").offset(x: 0, y: -140)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) / 2), axis: (x: 90, y: 90, z: 0))
                     Text("3").offset(x: 140, y: 0)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) / 2), axis: (x: 90, y: 90, z: 0))
                     Text("6").offset(x: 0, y: 140)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) / 2), axis: (x: 90, y: 90, z: 0))
                     Text("9").offset(x: -140, y: 0)
                         .foregroundColor(.white)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .shadow(color: isJedi ? .blue : .red, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) / 2), axis: (x: 90, y: 90, z: 0))
                     //Hours Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
@@ -76,6 +82,7 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .black, radius: 10, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 240) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.hour) * 30))
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue)), axis: (x: 90, y: 90, z: 0))
                     //Minutes Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
@@ -86,6 +93,7 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 200) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.min) * 6))
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue)), axis: (x: 90, y: 90, z: 0))
                     //Seconds Hand
                     Capsule(style: .circular)
                         .fill(Color.white)
@@ -96,12 +104,12 @@ struct MainClockView: View {
                         .shadow(color: isJedi ? .blue : .orange, radius: 8, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         .offset(y: -(width - 180) / 4)
                         .rotationEffect(Angle(degrees: Double(currentTimeNow.sec) * 6))
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue)), axis: (x: 90, y: 90, z: 0))
                     Circle()
                         .fill(Color.black)
                         .shadow(color: isJedi ? .blue : .red, radius: 5, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                       
                         .frame(width: 20, height: 20)
-                   
+                        .rotation3DEffect(Angle(degrees: Double(sliderValue) * 7.5), axis: (x: 90, y: 90, z: 0))
                 }
                 .onAppear(perform: {
                     withAnimation(Animation.linear(duration: 1.5)) {
@@ -142,6 +150,7 @@ struct MainClockView: View {
                 }
                 .cornerRadius(20)
                 .shadow(color:isJedi ? .blue : .red, radius: 15, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                .rotation3DEffect(Angle(degrees: Double(sliderValue) * 7.5), axis: (x: 90, y: 90, z: 0))
 Spacer()
             }
         }
